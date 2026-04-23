@@ -59,5 +59,10 @@ class SubstructureDelivery(Agent):
 
             for _ in range(self.num_parallel):
                 for item in self.items:
+                    if len(self.port.put_queue) > 0:
+                        yield self.env.timeout(24)
+                        self.submit_action_log(
+                            "Port storage is full, waiting 1 day", 24
+                        )
                     yield self.port.put(item)
                 n += 1
