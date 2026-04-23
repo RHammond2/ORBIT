@@ -59,6 +59,5 @@ class SubstructureDelivery(Agent):
 
             for _ in range(self.num_parallel):
                 for item in self.items:
-                    self.port.put(item)
-
+                    yield self.port.put(item)
                 n += 1
