@@ -91,6 +91,10 @@ class MonopileInstallation(InstallPhase):
         config = self.initialize_library(config, **kwargs)
         self.config = self.validate_config(config)
 
+        if (sc_config := self.config.get("monopile_supply_chain")) is not None:
+            if (capacity := sc_config.get("substructure_storage")) is not None:
+                self.config.port["capacity"] = capacity
+
         self.initialize_port()
         self.initialize_substructure_delivery()
         self.initialize_wtiv()
