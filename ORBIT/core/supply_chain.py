@@ -15,7 +15,7 @@ class SubstructureDelivery(Agent):
         self,
         component,
         num,
-        deilvery_time,
+        delivery_time,
         port,
         items,
         num_parallel=1,
@@ -29,7 +29,7 @@ class SubstructureDelivery(Agent):
             Component to be delivered.
         num : int
             Number of component sets to be delivered.
-        deilvery_time : int | float
+        delivery_time : int | float
             Time to between deliveries.
         num_parallel : int (optional)
             Number of parallel assembly lines.
@@ -40,7 +40,7 @@ class SubstructureDelivery(Agent):
 
         self.type = component
         self.num = num
-        self.delivery_time = deilvery_time
+        self.delivery_time = delivery_time
         self.port = port
         self.items = items
         self.num_parallel = num_parallel
