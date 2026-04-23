@@ -92,7 +92,8 @@ class JacketInstallation(InstallPhase):
 
         if (sc_config := self.config.get("jacket_supply_chain")) is not None:
             if (capacity := sc_config.get("substructure_storage")) is not None:
-                self.config.port["capacity"] = capacity
+                self.config.setdefault("port", {})
+                self.config.port.update({"capacity": capacity})
 
         self.initialize_port()
         self.initialize_substructure_delivery()
@@ -141,7 +142,6 @@ class JacketInstallation(InstallPhase):
             delivery_time = self.supply_chain.get(
                 "substructure_delivery_time", 168
             )
-            # storage = self.supply_chain.get("substructure_storage", "inf")
             supply_chain = SubstructureDelivery(
                 "Jacket",
                 self.num_jackets,
